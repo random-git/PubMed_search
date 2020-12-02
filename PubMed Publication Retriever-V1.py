@@ -1,7 +1,6 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[1]:
 
 
 #Author: Cong Zhu
@@ -20,25 +19,20 @@ import datetime
 
 # ### Search by key words and specified time frame, return two dataframes: 1) abstract dataframe (PMID,title,abstract,publication date) 2) authors dataframe in long format (PMID, author names)
 
-# In[ ]:
 
 
 '''modify the pathway as necessary'''
 os.chdir("")
 
 
-# In[2]:
 
 
 class pubmed_record:
-    #search_term = "oncology drug repurposing"
-    #start_time = '2020/03/01'
-    #end_time = '2020/10/10'
+
     def __init__(self,search_term = None,start_time= None,end_time= None):
         self.search_term=input("Please enter a keyword:")
         self.start_time, self.end_time = input("Range of publication time to be searched (YYYY/MM/DD - YYYY/MM/DD): ").split("-")
-        #self.start_time=input("Enter a start date (YYYY/MM/DD): \n")
-        #self.end_time=input("Enter an end date (YYYY/MM/DD): \n")
+
         
     
     def tab_generate(self):
@@ -58,8 +52,7 @@ class pubmed_record:
         end_m = self.end_time.split('/')[1]
         end_d = self.end_time.split('/')[2]
 
-        #url = 'https://pubmed.ncbi.nlm.nih.gov/?term=%28{}%29+AND+%28%28%22{}%2F{}%2F{}%22%5BDate+-+Modification%5D+%3A+%22{}%2F{}%2F{}%22%5BDate+-+Modification%5D%29%29&sort='\
-        #.format(search_term_url,start_y,start_m,start_d,end_y,end_m,end_d)
+
         
         url_p1 = 'https://pubmed.ncbi.nlm.nih.gov/?term=({})'.format(search_term_url)
         url_p2 = '%20AND%20(({}%2F{}%2F{}%5BDate%20-%20Publication%5D%20%3A%20{}%2F{}%2F{}%5BDate%20-%20Publication%5D))'        .format(start_y,start_m,start_d,end_y,end_m,end_d)
@@ -136,40 +129,4 @@ class pubmed_record:
             df_all_author_info = df_all_author_info.append(df_page_author_info)
         return df_all_paper_info, df_all_author_info
 
-
-# In[3]:
-
-
-abstract_tab, author_tab = pubmed_record().tab_generate()
-
-
-# In[4]:
-
-
-abstract_tab.shape
-
-
-# In[5]:
-
-
-author_tab.shape
-
-
-# In[6]:
-
-
-abstract_tab.head()
-
-
-# In[7]:
-
-
-author_tab.head()
-
-
-# In[8]:
-
-
-author_tab.to_csv("author_tab.csv")
-abstract_tab.to_csv("abstract_tab.csv")
 
