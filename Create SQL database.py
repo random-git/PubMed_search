@@ -35,29 +35,6 @@ def sql_dump(*args):
         conn.close()
 
 
-# In[131]:
-
-
-def pick_authors(*args,save_name):
-    conn = sqlite3.connect('abstract_tab.db')
-    c = conn.cursor()
-    c.execute("ATTACH ? AS author_tab", ('author_tab.db',))
-    
-    sql_script = '''SELECT abst.Title,abst.PMID,auth.Authors,abst.Abtract FROM abstract_tab abst, author_tab auth
-         where auth.Authors IN {} and (auth.PMID = abst.PMID)'''.format(tuple(args))
-    
-    c.execute(sql_script)
-    result = c.fetchall()
-    
-    fp = open('{}.csv'.format(save_name), 'w',newline='')
-    myFile = csv.writer(fp)
-    myFile.writerow(['Title','PMID','Author Name','Abstract'])
-    myFile.writerows(result)
-    fp.close()
-    conn.commit()
-    conn.close()
-
-
 # In[187]:
 
 
