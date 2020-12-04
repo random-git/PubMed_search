@@ -106,13 +106,20 @@ class pubmed_record:
                     sig_paper_date = soup_1paper.find("meta", attrs={'name':'citation_publication_date'},recursive = True)['content']
                 except TypeError:
                     sig_paper_date = soup_1paper.find("meta", attrs={'name':'citation_online_date'},recursive = True)['content']
+                    
+                if len(sig_paper_date_break)==1:
+                    sig_paper_date2 = '/'.join([sig_paper_date_break[0],"01","01"])
+                elif len(sig_paper_date_break)==2:   
+                    sig_paper_date2 = '/'.join(sig_paper_date_break+[start_d])
+                else:
+                    sig_paper_date2 = sig_paper_date
                 
                 sig_paper_title = soup_1paper.find("meta", attrs={'name':'citation_title'},recursive = True)['content']
 
                 pub_summary_paper_info = {"Title":[sig_paper_title],
                                "PMID":[pmid],
-                               "Publication Date:":[sig_paper_date],
-                               "Abtract":[abs_content]}
+                               "Publication Date":[sig_paper_date2],
+                               "Abstract":[abs_content]}
                 
                 pub_summary_author_info = {
                                "PMID":pmid,
