@@ -104,6 +104,8 @@ class pubmed_record:
                     sig_paper_date = soup_1paper.find("meta", attrs={'name':'citation_publication_date'},recursive = True)['content']
                 except TypeError:
                     sig_paper_date = soup_1paper.find("meta", attrs={'name':'citation_online_date'},recursive = True)['content']
+                
+                sig_paper_date_break = sig_paper_date.split("/")
                     
                 if len(sig_paper_date_break)==1:
                     sig_paper_date2 = '/'.join([sig_paper_date_break[0],"01","01"])
