@@ -33,11 +33,12 @@ class pubmed_record:
         
     
     def tab_generate(self):
+        
         search_term_list = self.search_term.split()
         if len(search_term_list) >1:
             search_term_url = "+".join(search_term_list)
         else:
-            search_term_url = search_term
+            search_term_url = self.search_term
 
 
 
