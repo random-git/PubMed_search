@@ -11,12 +11,6 @@ import pandas as pd
 import csv
 
 
-# In[190]:
-
-
-os.getcwd()
-'''modify the pathway as necessary'''
-os.chdir("")
 
 
 # In[32]:
@@ -73,7 +67,7 @@ class pick_authors:
         c = conn.cursor()
         c.execute("ATTACH ? AS author_tab", ('author_tab.db',))
 
-        sql_script = '''SELECT abst.Title,abst.PMID,auth.Authors,abst.Abtract FROM abstract_tab abst, author_tab auth
+        sql_script = '''SELECT abst.Title,abst.PMID,auth.Authors,abst.Abstract FROM abstract_tab abst, author_tab auth
              where auth.Authors IN {} and (auth.PMID = abst.PMID)'''.format(tuple(self.namelist()))
 
         c.execute(sql_script)
