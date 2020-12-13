@@ -21,9 +21,6 @@ import datetime
 
 
 
-'''modify the pathway as necessary'''
-os.chdir("")
-
 
 
 
