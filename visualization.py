@@ -33,7 +33,7 @@ def bar_plot(data, save=True, x_label='Publication Date', y_label='Total Number 
 		plt.savefig('bar_plot.pdf')
 	
 	plt.show()
-	return 
+	return ax
 
 
 # Line Plot by Month
@@ -52,7 +52,7 @@ def line_plot(data, save=True, marker='o', x_label='Publication Date', y_label='
 		plt.savefig('line_plot.pdf')
 
 	plt.show()
-	return 
+	return ax2
 
 
 # Table of Descriptive Statistics
@@ -66,4 +66,4 @@ def describe(data, save=True):
 	if save==True:
 		output = pd.DataFrame.from_records(result)
 		output.to_csv("description.csv")
-	return 
+	return result
