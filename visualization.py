@@ -23,7 +23,7 @@ def bar_plot(data, save=True, x_label='Publication Date', y_label='Total Number 
 	ax.set_ylabel(y_label, fontsize=label_fontsize)
 	ax.set_title(title, fontsize=title_fontsize)
 	for p in ax.patches:
-		ax.annotate(str(p.get_height()), (p.get_x()+0.15, p.get_height()+0.8))
+		ax.annotate(str(p.get_height()), (p.get_x()+0.1, p.get_height()+0.8))
 	
 	if save == True: 
 		plt.savefig('bar_plot.pdf')
