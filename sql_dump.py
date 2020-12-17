@@ -23,7 +23,7 @@ def sql_dump(*args):
         
         f_tmp = pd.read_csv(file)
         conn = sqlite3.connect(dbname)
-        f_tmp.to_sql(fname, conn)
+        f_tmp.to_sql(fname, conn, if_exists = 'replace')
         
         print("{} is created".format(dbname))
         conn.close()
