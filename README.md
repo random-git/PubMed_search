@@ -1,4 +1,5 @@
 # PubMed_search
+Author: Cong Zhu
 ### Introduction 
 The pubmeb crawler is multi-threaded web crawler designed to extract publication records from PubMed via user defined key words and timeframe, as well as performing post hoc data management and analyses.
 ![erd](https://user-images.githubusercontent.com/62033407/106549698-24053780-64d7-11eb-9211-9dabba80ad43.png)<br/>
